@@ -196,9 +196,9 @@
  * The fan will turn on automatically whenever any stepper is enabled
  * and turn off after a set period after all steppers are turned off.
  */
-//#define USE_CONTROLLER_FAN
+#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  //#define CONTROLLER_FAN_PIN -1        // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN 6        // Set a custom pin for the controller fan
   #define CONTROLLERFAN_SECS 60          // Duration in seconds for the fan to run after all motors are disabled
   #define CONTROLLERFAN_SPEED 255        // 255 == full speed
 #endif
@@ -237,13 +237,13 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN 11
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
 #define E4_AUTO_FAN_PIN -1
 #define CHAMBER_AUTO_FAN_PIN -1
-#define EXTRUDER_AUTO_FAN_TEMPERATURE 50
+#define EXTRUDER_AUTO_FAN_TEMPERATURE 40
 #define EXTRUDER_AUTO_FAN_SPEED   255  // == full speed
 
 /**
@@ -803,7 +803,7 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING //Lars
 #if ENABLED(BABYSTEPPING)
   //#define BABYSTEP_XY              // Also enable X/Y Babystepping. Not supported on DELTA!
   #define BABYSTEP_INVERT_Z false    // Change if Z babysteps should go the other way
@@ -833,7 +833,7 @@
  * See http://marlinfw.org/docs/features/lin_advance.html for full instructions.
  * Mention @Sebastianv650 on GitHub to alert the author of any issues.
  */
-//#define LIN_ADVANCE
+//#define LIN_ADVANCE //Lars
 #if ENABLED(LIN_ADVANCE)
   #define LIN_ADVANCE_K 0.22  // Unit: mm compression per 1mm/s extruder speed
   //#define LA_DEBUG          // If enabled, this will generate debug information output over USB.
@@ -1161,10 +1161,10 @@
   #define HOLD_MULTIPLIER    0.5  // Scales down the holding current from run current
   #define INTERPOLATE       true  // Interpolate X/Y/Z_MICROSTEPS to 256
 
-  #define X_CURRENT          800  // rms current in mA. Multiply by 1.41 for peak current.
+  #define X_CURRENT          950  // rms current in mA. Multiply by 1.41 for peak current.
   #define X_MICROSTEPS        16  // 0..256
 
-  #define Y_CURRENT          800
+  #define Y_CURRENT          950
   #define Y_MICROSTEPS        16
 
   #define Z_CURRENT          800
@@ -1208,7 +1208,7 @@
    * Use Trinamic's ultra quiet stepping mode.
    * When disabled, Marlin will use spreadCycle stepping mode.
    */
-  #define STEALTHCHOP
+  //#define STEALTHCHOP
 
   /**
    * Monitor Trinamic TMC2130 and TMC2208 drivers for error conditions,
@@ -1221,7 +1221,7 @@
    * M912 - Clear stepper driver overtemperature pre-warn condition flag.
    * M122 S0/1 - Report driver parameters (Requires TMC_DEBUG)
    */
-  //#define MONITOR_DRIVER_STATUS
+  #define MONITOR_DRIVER_STATUS
 
   #if ENABLED(MONITOR_DRIVER_STATUS)
     #define CURRENT_STEP_DOWN     50  // [mA]
@@ -1273,7 +1273,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-  //#define TMC_DEBUG
+  #define TMC_DEBUG
 
   /**
    * M915 Z Axis Calibration
@@ -1555,7 +1555,7 @@
   #define USER_DESC_2 "Preheat for PLA"
   #define USER_GCODE_2 "M140 S" STRINGIFY(PREHEAT_1_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_1_TEMP_HOTEND)
 
-  #define USER_DESC_3 "Preheat for ABS"
+  #define USER_DESC_3 "Preheat for PETG"
   #define USER_GCODE_3 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
 
   #define USER_DESC_4 "Heat Bed/Home/Level"
